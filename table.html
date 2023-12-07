@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page HTML - Utilisation de TailwindCSS</title>
+</head>
+<body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover">
+<!-- Header -->
+<header class="container mx-auto px-6">
+  <div class="w-full flex items-center justify-between">
+    <div class="py-6">
+      <img class="h-8 w-auto" src="./public/logo.svg" alt="Logo">
+    </div>
+    <nav class="space-x-4 text-gray-600 text-xs sm:text-sm">
+      <a href="#" class="no-underline">Accueil</a>
+      <a href="#" class="no-underline">À propos</a>
+      <a href="#" class="no-underline">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container rounded-xl mx-auto mb-20 text-center pt-8">
+  <div x-data="FlightTable('./public/data.json')" class="flow-root max-w-6xl mx-auto">
+
+    <div class="flex items-center mb-6 justify-between">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <label for="from" class="text-gray-700 font-bold">From:</label>
+          <select id="from" name="from" x-model="filter.from" data-filter-value="from" data-filter-compare="equal" class="w-42" @change="filterTable">
+            <option value="">Select a value</option>
+            <template x-for="from in fromValues">
+              <option :value="from" x-text="from"></option>
+            </template>
+          </select>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label for="to" class="text-gray-700 font-bold">To:</label>
+          <select id="to" name="from" x-model="filter.to" data-filter-value="to" data-filter-compare="equal" @change="filterTable">
+            <option value="">Select a value</option>
+            <template x-for="to in toValues">
+              <option :value="to" x-text="to"></option>
+            </template>
+          </select>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <label for="to" class="text-gray-700 font-bold">Distance min:</label>
+          <input type="number" id="distance-min" x-model="filter.kmMin" data-filter-value="kms" data-filter-compare="greaterThanOrEqual" class="w-24" value="0" @keyup="filterTable">
+        </div>
+        <div class="flex items-center space-x-2">
+          <label for="to" class="text-gray-700 font-bold">Distance max:</label>
+          <input type="number" id="distance-max" x-model="filter.kmMax" data-filter-value="kms" data-filter-compare="lessThanOrEqual" class="w-24" value="10000" @keyup="filterTable">
+        </div>
+      </div>
+    </div>
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table class="w-full divide-y divide-gray-300">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">From</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">To</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Kms</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <template x-for="flight in datas">
+              <tr>
+                <td x-text="flight.from" class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-0"></td>
+                <td x-text="flight.to" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
+                <td x-text="flight.kms + ' kms'" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"></td>
+              </tr>
+            </template>
+            <template x-if="datas.length === 0">
+              <tr>
+                <td colspan="3" class="px-3 py-4 text-sm text-gray-500">No data</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <template x-for="index in totalPages">
+            <span
+                class="text-gray-600 cursor-pointer inline-block px-3 rounded-md"
+                :class="index == currentPage ? 'bg-blue-500 text-white' : ''"
+                x-text="index"
+                @click="setCurrentPage(index)"
+            ></span>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full border-t bg-white pb-12">
+  <div class="w-full container mx-auto flex flex-wrap items-center">
+    <div class="w-full bottom-auto text-center py-8">
+      <p class="text-sm text-gray-500 -mb-2">2023, Tous les droits sont réservés</p>
+    </div>
+  </div>
+</footer>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
