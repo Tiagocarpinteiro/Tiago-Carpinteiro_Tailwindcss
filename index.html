@@ -16,7 +16,7 @@
         <div class="container mx-auto flex flex-wrap justify-between items-center">
             <div class="flex md:w-1/2 justify-center md:justify-start text-white">
                 <a class="text-white no-underline hover:text-white hover:no-underline" href="#accueil">
-                    <img class="h-8 w-auto" src="./public/logo.png" alt="Logo">
+                    <img class="h-16 w-auto" src="./public/logo.png" alt="Logo">
                 </a>
             </div>
             <div class="relative z-50 w-10 h-10 md:hidden" @click="toggleMenu">
@@ -97,7 +97,7 @@
         <h1 class="text-4xl uppercase font-black">Bienvenue</h1>
         <p class="mt-6 font-bold">Portfolio de Emmet Brickowoski</p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#portfolio">Découvrir mes projets</a>
+            <a class="bg-blue-500 p-4 rounded-2xl hover:bg-blue-700 text-white" href="#portfolio">Découvrir mes projets</a>
             <a href="#">Télécharger mon CV</a>
         </div>
     </div>
@@ -169,7 +169,7 @@
                     x-transition:leave-start="opacity-100"
                     x-transition:leave-end="opacity-0"
             >
-                <div class="w-full bg-white">
+                <div class="w-full fixed bg-white">
                     <div class="modal-header p-10">
                         <h2 class="modal-title mb-4">Projet 1 : Vidéo Motion design</h2>
                         <div class="modal-body mb-4">
@@ -207,7 +207,7 @@
                     x-transition:leave-start="opacity-100"
                     x-transition:leave-end="opacity-0"
             >
-                <div class="w-full bg-white">
+                <div class="w-full fixed bg-white">
                     <div class="modal-header p-10">
                         <h2 class="modal-title mb-4">Projet 2 : Création d'une association au sein de l'IUT</h2>
                         <div class="modal-body mb-4">
@@ -245,7 +245,7 @@
                     x-transition:leave-start="opacity-100"
                     x-transition:leave-end="opacity-0"
             >
-                <div class="w-full bg-white">
+                <div class="w-full fixed bg-white">
                     <div class="modal-header p-10">
                         <h2 class="modal-title mb-4">Projet 3 : Réalisation de mon CV vidéo</h2>
                         <div class="modal-body mb-4">
@@ -281,7 +281,7 @@
 </section>
 
 <!-- COMPÉTENCES -->
-<section id="competences">
+<section id="competences" class="container m-auto items-center mb-[160px]">
     <h2 class="text-4xl uppercase font-black underline decoration-yellow-500/30 underline-offset-8">Mes compétences</h2>
     <div class="grid grid-cols-4 align-middle items-center text-center">
         <div>
@@ -300,37 +300,58 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="container m-auto items-center mb-[160px]">
     <div class="container">
         <div class="max-w-md">
             <h2 class="text-4xl uppercase font-black underline decoration-green-500/30 underline-offset-8">Me contacter</h2>
         </div>
-        <div class="">
-            <form action="#" class="">
-                <div class="">
-                    <label class="" for="name">
+        <div class="w-full mx-auto">
+            <form action="#" class="px-6 pb-6 pt-4 mb-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                         Nom
                     </label>
-                    <input class=""
+                    <input class="shadow appearance-none border w-full py-2 px-3 text-gray-700 leading-tight"
                            id="name" type="text" placeholder="Votre nom">
                 </div>
-                <div class="">
-                    <label class="" for="email">
+                <div class="mb-6">
+                    <p class="block text-gray-700 text-sm font-bold mb-2">Êtes-vous un fan ?</p>
+                    <div>
+                        <input class="shadow appearance-none border p-2 text-pink-500 leading-tight" id="oui" type="checkbox" name="oui"/>
+                        <label class="text-gray-700 text-sm font-bold" for="oui">
+                            Oui
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <input class="shadow appearance-none border p-2 text-blue-500 leading-tight" id="non" type="checkbox" name="non"/>
+                        <label class="text-gray-700 text-sm font-bold" for="non">
+                            Non
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                         Email
                     </label>
-                    <input class=""
-                           id="email" type="email" placeholder="Votre email">
+                    <input class="shadow appearance-none border w-full py-2 px-3 text-gray-700 leading-tight"
+                           id="email" type="email" placeholder="Votre email (même si vous le mettez pas c'est pas très grave, je ne vous répondrais pas)">
                 </div>
-                <div class="">
-                    <label class="" for="message">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
                         Message
                     </label>
                     <textarea
-                            class="caret-pink-500"
-                            id="message" placeholder="Votre message" rows="4"></textarea>
+                            class="shadow appearance-none border w-full py-2 px-3 text-gray-700 leading-tight"
+                            id="message" placeholder="Votre message (j'adore les compliments donc n'hésitez pas !!!)" rows="4"></textarea>
                 </div>
-                <div class="">
-                    <button class=""
+                <div class="mb-6">
+                    <input class="shadow appearance-none border p-2 text-green-500 leading-tight" id="atteste" type="checkbox" name="atteste"/>
+                    <label class="text-gray-700 text-sm font-bold mb-2" for="atteste">
+                        J'atteste sur l'honneur ne pas être lord Business et ne pas travailler pour lui.
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <button class="bg-yellow-500 p-4 rounded-2xl hover:bg-yellow-300"
                             type="submit">
                         Envoyer
                     </button>
@@ -342,7 +363,7 @@
 
 
 <!-- Footer -->
-<footer class="w-full border-t bg-white pb-12">
+<footer class="w-full border-t bg-white pb-12 container m-auto items-center">
     <div class="w-full container mx-auto flex flex-wrap items-center">
         <div class="w-full bottom-auto text-center py-8">
             <p class="text-sm text-gray-500 -mb-2">Tiago Carpinteiro -- 2023 ©Tous les droits sont réservés</p>
