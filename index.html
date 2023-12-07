@@ -115,9 +115,10 @@
             <h2 class="text-4xl uppercase font-black underline decoration-red-500/30 underline-offset-8">FAQ</h2>
             <div>
                 <div class="component-toggle py-5 hover:border-dashed border-b-2 border-blue-500/30 " x-data="EditorPreview">
-                <button @click="toggle()" class="font-bold">Quel est ton métier ?</button>
-                <div x-show="open" class="component-toggle-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, autem, consequuntur, delectus doloremque dolorum eaque eos expedita facere fugit harum impedit ipsam itaque libero maiores maxime minima. </p>
+                    <button @click="toggle()" class="font-bold">Quel est ton métier ?</button>
+                    <div x-show="open" class="component-toggle-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, autem, consequuntur, delectus doloremque dolorum eaque eos expedita facere fugit harum impedit ipsam itaque libero maiores maxime minima. </p>
+                    </div>
                 </div>
             </div>
             <div>
@@ -127,6 +128,15 @@
                         <p>C'est une référence au film... </p>
                     </div>
                 </div>
+            </div>
+            <div>
+                <div class="component-toggle py-5 hover:border-dashed border-b-2 border-pink-500/30 " x-data="EditorPreview">
+                    <button @click="toggle()" class="font-bold">Tout est super génial !!</button>
+                    <div x-show="open" class="component-toggle-content">
+                        <p>Tout est super génial <br>Tout est cool quand tu joues dans la même équipe <br>Tout est super génial <br>C’est un rêve magique</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
